@@ -1,0 +1,44 @@
+TinyLog - Minimalistic logging library for C++
+
+(c) 2012 Sascha Fendrich
+
+
+License:
+
+This program is free software. It comes without any warranty, to
+the extent permitted by applicable law. You can redistribute it
+and/or modify it under the terms of the Do What The Fuck You Want
+To Public License, Version 2, as published by Sam Hocevar. See
+http://sam.zoy.org/wtfpl/COPYING for more details.
+
+
+Description:
+
+TinyLog is a minimalistic logging library for C++. It's purpose is
+to provide a lightweight and easy to use logging capability for 
+small software projects. It supports a single global logger that 
+writes messages to a std::ostream with log4j-style log levels: 
+kOff < kFatal < kError < kWarn < kInfo < kDebug < kTrace < kAll.
+The default output stream is std::cerr. It can be changed with
+TinyLog::SetStream (stream). The current setting can be retrieved
+with TinyLog::stream (). The default log level is kInfo and can be
+changed with TinyLog::SetLevel (level). The current level can be
+retrieved with TinyLog::level (). A message is sent at a certain
+level to the logger by streaming it with << to the macros FATAL,
+ERROR, WARN, INFO, DEBUG, or TRACE. If the current log level is
+greater or equal to the message's level then a time stamp, the file
+name, the line number, the message level, and the message are written
+to the output stream. Logging a message should always end with
+'<< std::endl;'.
+
+Example:
+
+ERROR << "A nice error message." << variable_info << std::endl;
+
+Look into tiny_log_test.cpp for more examples.
+
+
+Compiling
+
+To build the library just type 'make'. The test example can be built
+with 'make test'. For cleanup type 'make clean'.
